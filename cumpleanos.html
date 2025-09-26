@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Quien cumple años mañana?</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      background: #1a0026;
+    }
+    .bg-anim {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .shape {
+      position: absolute;
+      opacity: 0.7;
+      mix-blend-mode: lighten;
+      animation-timing-function: linear;
+    }
+    /* === Círculos === */
+    .circle1 {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #e75480 70%, #a259c6 100%);
+      left: 10vw; top: 20vh;
+      animation: moveCircle1 16s infinite alternate;
+    }
+    .circle2 {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 60% 60%, #a259c6 70%, #e75480 100%);
+      left: 70vw; top: 60vh;
+      animation: moveCircle2 18s infinite alternate;
+    }
+    .circle3 {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #e75480 70%, #a259c6 100%);
+      left: 40vw; top: 10vh;
+      animation: moveCircle3 20s infinite alternate;
+    }
+    .circle4 {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 70%, #a259c6 70%, #e75480 100%);
+      left: 15vw; top: 80vh;
+      animation: moveCircle4 22s infinite alternate;
+    }
+    /* === Cuadrados === */
+    .square1 {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #e75480 60%, #a259c6 100%);
+      left: 60vw; top: 10vh;
+      animation: moveSquare1 20s infinite alternate;
+      border-radius: 18px;
+    }
+    .square2 {
+      width: 60px; height: 60px;
+      background: linear-gradient(45deg, #a259c6 60%, #e75480 100%);
+      left: 25vw; top: 70vh;
+      animation: moveSquare2 22s infinite alternate;
+      border-radius: 12px;
+    }
+    .square3 {
+      width: 80px; height: 80px;
+      background: linear-gradient(225deg, #e75480 60%, #a259c6 100%);
+      left: 75vw; top: 40vh;
+      animation: moveSquare3 24s infinite alternate;
+      border-radius: 14px;
+    }
+    .square4 {
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, #a259c6 60%, #e75480 100%);
+      left: 5vw; top: 30vh;
+      animation: moveSquare4 26s infinite alternate;
+      border-radius: 10px;
+    }
+    /* === Keyframes figuras === */
+    @keyframes moveCircle1 {
+      0% { left: 10vw; top: 20vh; }
+      100% { left: 30vw; top: 40vh; }
+    }
+    @keyframes moveCircle2 {
+      0% { left: 70vw; top: 60vh; }
+      100% { left: 50vw; top: 80vh; }
+    }
+    @keyframes moveCircle3 {
+      0% { left: 40vw; top: 10vh; }
+      100% { left: 60vw; top: 30vh; }
+    }
+    @keyframes moveCircle4 {
+      0% { left: 15vw; top: 80vh; }
+      100% { left: 35vw; top: 60vh; }
+    }
+    @keyframes moveSquare1 {
+      0% { left: 60vw; top: 10vh; }
+      100% { left: 80vw; top: 30vh; }
+    }
+    @keyframes moveSquare2 {
+      0% { left: 25vw; top: 70vh; }
+      100% { left: 5vw; top: 50vh; }
+    }
+    @keyframes moveSquare3 {
+      0% { left: 75vw; top: 40vh; }
+      100% { left: 55vw; top: 20vh; }
+    }
+    @keyframes moveSquare4 {
+      0% { left: 5vw; top: 30vh; }
+      100% { left: 25vw; top: 10vh; }
+    }
+
+    /* === Confeti === */
+    .confetti-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .confetti {
+      position: absolute;
+      width: 8px; height: 14px;
+      top: -20px;
+      opacity: 0.8;
+      border-radius: 2px;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    /* === Texto === */
+    .center-content {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+    .center-content p {
+      margin: 0.5em 0;
+    }
+    .main-title {
+      font-size: 2.8em;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 16px #a259c6;
+    }
+    .subtitle {
+      font-size: 1.7em;
+      font-weight: 500;
+      color: #e75480;
+      text-shadow: 0 1px 8px #a259c6;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-anim">
+    <!-- círculos -->
+    <div class="shape circle1"></div>
+    <div class="shape circle2"></div>
+    <div class="shape circle3"></div>
+    <div class="shape circle4"></div>
+    <!-- cuadrados -->
+    <div class="shape square1"></div>
+    <div class="shape square2"></div>
+    <div class="shape square3"></div>
+    <div class="shape square4"></div>
+  </div>
+
+  <!-- confeti -->
+  <div class="confetti-container">
+    <!-- Generamos muchos confetis -->
+    <div class="confetti" style="left:5%; background:#e75480; animation-duration:4s;"></div>
+    <div class="confetti" style="left:15%; background:#a259c6; animation-duration:5s;"></div>
+    <div class="confetti" style="left:25%; background:#ff77ff; animation-duration:6s;"></div>
+    <div class="confetti" style="left:35%; background:#ff99cc; animation-duration:7s;"></div>
+    <div class="confetti" style="left:45%; background:#a259c6; animation-duration:5.5s;"></div>
+    <div class="confetti" style="left:55%; background:#e75480; animation-duration:6.5s;"></div>
+    <div class="confetti" style="left:65%; background:#ff77ff; animation-duration:4.8s;"></div>
+    <div class="confetti" style="left:75%; background:#d870ff; animation-duration:7.2s;"></div>
+    <div class="confetti" style="left:85%; background:#ff99cc; animation-duration:6.2s;"></div>
+    <div class="confetti" style="left:95%; background:#a259c6; animation-duration:5.8s;"></div>
+  </div>
+
+  <div class="center-content">
+    <p class="main-title">¿Quien cumple años mañana?</p>
+    <p class="subtitle">Un bosón</p>
+  </div>
+</body>
+</html>
